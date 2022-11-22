@@ -1,0 +1,27 @@
+name: Update pod version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version number to use to update the pod. If not provided, the patch version will be incremented.'
+        required: false
+        default: ''
+
+jobs:
+  update_pod_version:
+    name: Update pod version
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_ACTIONS_PAT }}
+          submodules: recursive
+
+      - name: Update pod version
+        uses: ./submodules/ios-tooling/gh-actions/update-pod-version
+        with:
+          version: ${{ github.event.inputs.version }}

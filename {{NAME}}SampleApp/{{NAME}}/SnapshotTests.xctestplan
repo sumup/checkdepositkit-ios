@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "F8124260-5062-4A64-8D3B-8133967B70E1",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+
+    ],
+    "environmentVariableEntries" : [
+      {
+        "key" : "IMAGE_DIFF_DIR",
+        "value" : "$(SOURCE_ROOT)\/..\/{{NAME}}\/Tests\/Snapshot\/specs\/FailureDiffs"
+      },
+      {
+        "key" : "FB_REFERENCE_IMAGE_DIR",
+        "value" : "$(SOURCE_ROOT)\/..\/{{NAME}}\/Tests\/Snapshot\/specs\/ReferenceImages"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:{{NAME}}SampleApp.xcodeproj",
+      "identifier" : "C46929E825F28DCC0037E096",
+      "name" : "{{NAME}}SampleApp"
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:{{NAME}}SampleApp.xcodeproj",
+        "identifier" : "E032B10C28D878F4005DAD27",
+        "name" : "{{NAME}}SnapshotTests"
+      }
+    }
+  ],
+  "version" : 1
+}

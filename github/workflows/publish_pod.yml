@@ -1,0 +1,27 @@
+name: Publish Pod
+
+on:
+  push:
+    tags:
+      # Trigger on semantic version tags 'x.y' or 'x.y.z'
+      - '[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  pod-publish:
+    name: Publish Pod
+    runs-on: macos-12
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_ACTIONS_PAT }}
+          submodules: recursive
+
+      - name: Publish Pod
+        uses: ./submodules/ios-tooling/gh-actions/publish-pod
+        with:
+          github-token: ${{ secrets.GH_ACTIONS_PAT }}
+          name: '{{NAME}}'

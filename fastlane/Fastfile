@@ -1,0 +1,20 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+import('../submodules/ios-tooling/fastlane/FastlaneHelpers.rb')
+import('../submodules/ios-tooling/fastlane/FastlanePodHelpers.rb')
+
+before_all do
+  ENV[SumUpEnv::WORKSPACE] = '{{NAME}}SampleApp.xcworkspace'
+  ENV[SumUpEnv::SCHEME]    = '{{NAME}}SampleApp'
+  ENV[SumUpEnv::PODSPEC]   = '{{NAME}}'
+end
